@@ -25,3 +25,9 @@ C:\Users\i.martin\NordigenSwagger\NordigenSwagger\obj\Debug\net6.0\refint\Nordig
 C:\Users\i.martin\NordigenSwagger\NordigenSwagger\obj\Debug\net6.0\NordigenSwagger.pdb
 C:\Users\i.martin\NordigenSwagger\NordigenSwagger\obj\Debug\net6.0\NordigenSwagger.genruntimeconfig.cache
 C:\Users\i.martin\NordigenSwagger\NordigenSwagger\obj\Debug\net6.0\ref\NordigenSwagger.dll
+C:\Users\i.martin\NordigenSwagger\NordigenSwagger\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\i.martin\NordigenSwagger\NordigenSwagger\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+C:\Users\i.martin\NordigenSwagger\NordigenSwagger\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\i.martin\NordigenSwagger\NordigenSwagger\bin\Debug\net6.0\MicroElements.Swashbuckle.FluentValidation.dll
+C:\Users\i.martin\NordigenSwagger\NordigenSwagger\bin\Debug\net6.0\NordigenSwagger.xml
+C:\Users\i.martin\NordigenSwagger\NordigenSwagger\obj\Debug\net6.0\NordigenSwagger.xml

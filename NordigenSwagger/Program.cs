@@ -1,8 +1,14 @@
+using FluentValidation.AspNetCore;
+using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.OpenApi.Models;
+using NordigenSwagger.Controllers;
+using Swashbuckle.AspNetCore.Swagger;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<UserValidator>());
 builder.Services.AddEndpointsApiExplorer();
 
 // Información que se muestra en la interfaz del usuario.
@@ -25,8 +31,11 @@ builder.Services.AddSwaggerGen(options =>
                 Url = new Uri("https://example.com/license") 
             }
         });
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        options.IncludeXmlComments(xmlPath);
     });
-
+builder.Services.AddFluentValidationRulesToSwagger();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
