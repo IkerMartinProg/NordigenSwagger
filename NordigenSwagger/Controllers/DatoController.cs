@@ -43,13 +43,11 @@ namespace NordigenSwagger.Controllers
                 MenorOIgual = Random.Shared.Next(1, 10),
                 MayorQue = Random.Shared.Next(1, 5),
                 MayorOIgual = Random.Shared.Next(0, 5),
-                UnoACuatro = Random.Shared.Next(1, 4),
                 Email = "correo@gmail.com",
                 TarjetaCredito = "5555555555554444",
-                Vacio = null,
                 RangoEx = Random.Shared.Next(0, 11),
                 RangoIn = Random.Shared.Next(1, 10),
-                Precio = 3.54 
+                Precio = 13.54m 
             })
             .ToArray();
         }
@@ -70,9 +68,7 @@ namespace NordigenSwagger.Controllers
                     "Respuesta: " + dato.Respuesta + "\n" +
                     "Menor Que: " + dato.MenorQue + " | " + "Menor O Igual: " + dato.MenorOIgual + "\n" +
                     "Mayor Que: " + dato.MayorQue + " | " + "Mayor O Igual: " + dato.MayorOIgual + "\n" +
-                    "Uno A Cuatro: " + dato.UnoACuatro + "\n" +
                     "Email: " + dato.Email + " | " + "Tarjeta de Crédito: " + dato.TarjetaCredito + "\n" +
-                    "Vacio: " + dato.Vacio + "\n" +
                     "RangoEx: " + dato.RangoEx + " | " + "RangoIn: " + dato.RangoIn + "\n" +
                     "Precio: " + dato.Precio;
                 return Ok(resultado);
@@ -95,15 +91,16 @@ namespace NordigenSwagger.Controllers
             RuleFor(x => x.Respuesta).Equal("SI").WithMessage("El campo 'Respuesta' debe tener el valor 'SI'.");
             RuleFor(x => x.Apellido1).Length(6, 7).WithMessage("El campo 'Apellido1' debe tener 6 o 7 caracteres.");
             RuleFor(x => x.Apellido2).MaximumLength(10).WithMessage("El campo 'Apellido2' solo puede tener 10 dígitos como máximo.");
-            RuleFor(x => x).
+            RuleFor(x => x.MenorQue).LessThan(10).WithMessage("El campo 'MenorQue' solo puede tener un valor menor que 10.");
+            RuleFor(x => x.MenorOIgual).LessThanOrEqualTo(10).WithMessage("El campo 'MenorOIgual solo puede tener un valor menor o igual que 10.'");
+            RuleFor(x => x.MayorQue).GreaterThan(0).WithMessage("El campo 'MayorQue' solo puede tener un valor mayor que 0.");
+            RuleFor(x => x.MayorOIgual).GreaterThanOrEqualTo(0).WithMessage("El campo 'MayorOIgual' solo puede tener un valor mayor o igual que 0.");
+            RuleFor(x => x.Email).EmailAddress().WithMessage("El campo 'Email' debe contener un correo electrónico válido.");
+            RuleFor(x => x.TarjetaCredito).CreditCard().WithMessage("El campo 'Tarjeta de crédito' debe contener una tarjeta de crédito válida.");
+            RuleFor(x => x.RangoEx).ExclusiveBetween(1, 10).WithMessage("El campo 'RangoEx' solo puede tener un valor entre 1 y 10, sin incluirlos.");
+            RuleFor(x => x.RangoIn).InclusiveBetween(1, 10).WithMessage("El campo 'RangoIn' solo puede tener un valor entre 1 y 10.");
+            RuleFor(x => x.Precio).ScalePrecision(2, 4).WithMessage("El campo 'Precio' solo puede tener un número con 4 dígitos en total (2 de ellos, decimales).");
 
-            /*
-            RuleFor(x => x.Nombre).NotNull().WithMessage("El campo 'nombre' debe tener algún valor.");
-            RuleFor(x => x.Nombre).NotEmpty().When(x => x.Nombre is not null).WithMessage("El campo 'nombre' debe tener algún valor.");
-            RuleFor(x => x.Telf).ExclusiveBetween(100000000, 999999999).WithMessage("El campo 'Teléfono' debe tener 9 dígitos.");
-            RuleFor(x => x.Salario).GreaterThan(0).WithMessage("El campo 'Salario' debe ser mayor que 0.");
-            RuleFor(x => x.Comision).Must((x, y) => x.Salario > x.Comision).WithMessage("El campo 'Comisión' debe ser menor que el salario.");
-            */
         }
     }
 }   

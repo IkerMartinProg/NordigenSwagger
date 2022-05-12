@@ -10,6 +10,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:NordigenSwagger.Controllers.DatoController.AddDato(NordigenSwagger.Dato)">
+            <summary>
+            Función para añadir un dato
+            </summary>
+            <param name="dato">Lista de datos</param>
+            <returns>Resultado del alta</returns>
+        </member>
         <member name="M:NordigenSwagger.Controllers.UserController.Get">
             <summary>
             Función para ver un usuario
