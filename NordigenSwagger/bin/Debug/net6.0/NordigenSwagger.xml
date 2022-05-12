@@ -4,6 +4,12 @@
         <name>NordigenSwagger</name>
     </assembly>
     <members>
+        <member name="M:NordigenSwagger.Controllers.DatoController.Get">
+            <summary>
+            Función para ver un dato
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:NordigenSwagger.Controllers.UserController.Get">
             <summary>
             Función para ver un usuario

@@ -8,7 +8,8 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers()
-    .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<UserValidator>());
+    .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<UserValidator>())
+    .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<DatoValidator>());
 builder.Services.AddEndpointsApiExplorer();
 
 // Información que se muestra en la interfaz del usuario.
